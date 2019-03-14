@@ -6,7 +6,7 @@ if CONFIG_FILE in os.listdir():
     with open(CONFIG_FILE, 'r') as f:
         CONFIG = json.load(f)
 
-from umqtt.robust import MQTTClient
+from umqtt.simple import MQTTClient
 import machine, neopixel, ubinascii, micropython, utime
 
 CLIENT_ID = ubinascii.hexlify(machine.unique_id())
