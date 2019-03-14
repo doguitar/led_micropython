@@ -27,12 +27,10 @@ def allblack():
 allblack()
 
 STEPS = [ 
-    [[[1], [10, 0, 0]]],
-    [[[2], [0, 10, 0]]],
-    [[[3], [0, 0, 10]]]
+    [[[1], [0, 0, 0]]]
 ]
-COUNT = 3
-REPEAT = True
+COUNT = 1
+REPEAT = False
 INDEX = 0
 LAST_FRAME_TIME = utime.ticks_ms()
 REPEAT_EVERY = 1000/4 # 3 fps
@@ -95,7 +93,17 @@ def sub_cb(topic, msg):
     except:
         print("error")
 
+def init():
+    black = (0, 0, 0)
+    white = (10, 10, 10)
+    for i in range(0, LEDS):
+        pixels[i] = white
+        pixels[i-1] = black
+        pixels.write()
+    allblack()
+
 def main(server):
+    init()
     c = MQTTClient(CLIENT_ID, server)
     c.set_callback(sub_cb)
     c.connect()
