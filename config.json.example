@@ -1,0 +1,8 @@
+{
+    "ssid" : "",
+    "password" : "",
+    "pin" : 0,
+    "leds" : 0,
+    "mqtt_server" : "",
+    "mqtt_topic" : ""
+}
