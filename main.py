@@ -90,6 +90,8 @@ def sub_cb(topic, msg):
         REPEAT = repeat
         REPEAT_EVERY = 1000/fps
 
+        allblack()
+
     except:
         print("error")
 
