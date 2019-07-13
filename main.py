@@ -115,5 +115,4 @@ def main(server):
         dopattern()
     c.disconnect()
 
-machine.freq(160000000)
 main(SERVER)

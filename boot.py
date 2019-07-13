@@ -16,12 +16,21 @@ def do_connect(ssid, password):
 
     network.WLAN(network.AP_IF).active(False)
 
-CONFIG = "config.json"
-if os.path.exists(CONFIG) and os.path.isfile(CONFIG):
-    try:
-        config = {}
-        with open(CONFIG, 'r') as f:
-            config = json.load(f)
-        do_connect(config.get("ssid"), config.get("password"))
-    except:
-        pass
+def boot():
+    config_file = "config.json"
+    if config_file in os.listdir('.') :
+        try:
+            config = {}
+            with open(config_file, 'r') as f:
+                config = json.load(f)
+
+            frequency = config.get("frequency", None)
+            if frequency:
+                import machine
+                machine.freq(frequency)
+
+            do_connect(config.get("ssid"), config.get("password"))
+        except:
+            pass
+
+boot()

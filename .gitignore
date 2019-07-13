@@ -1,3 +1,4 @@
 .micropythonrc
 .vscode/*
 config.json
+bin/*
